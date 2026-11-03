@@ -1,0 +1,6 @@
+{
+    "port":  8787,
+    "accessCode":  "898dd6bef6",
+    "dataDir":  "data",
+    "trustProxy":  true
+}
