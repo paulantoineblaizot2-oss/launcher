@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080d19">
+  <meta name="description" content="Havre, ton espace privé de stockage et de sauvegarde de fichiers.">
+  <title>Havre — Mes fichiers</title><link rel="stylesheet" href="/cloud/app.css?v=5"><link rel="stylesheet" href="/portal-app.css?v=3"><script src="/cloud/app.js?v=5" defer></script>
+</head>
+<body>
+  <button id="cloud-menu" aria-label="Ouvrir le menu" aria-expanded="false">☰</button><div id="cloud-scrim"></div>
+  <div class="cloud-shell">
+    <aside class="portal-rail" id="cloud-sidebar">
+      <a class="portal-brand" href="/#home" aria-label="Retour au portail"><span class="portal-crest">M<span>✦</span></span><span><b>MAVIE7620</b><small>PORTFOLIO PERSONNEL</small></span></a>
+      <div class="portal-profile"><span class="portal-avatar">M</span><span><b>MAVIE7620</b><small>CRÉATEUR</small></span><i></i></div>
+      <nav class="portal-nav" aria-label="Navigation principale">
+        <div class="portal-section-label">PORTAIL</div><a class="portal-link" href="/#home"><span>🏠</span><b>Accueil</b></a>
+        <div class="portal-section-label">MES PROJETS</div><a class="portal-link" href="/#nation"><span>⚜️</span><b>Algérie · site &amp; bots</b></a><a class="portal-link" href="/#harbor"><span>⛵</span><b>Harbor Launcher</b></a>
+        <div class="portal-section-label">UNIVERS</div><a class="portal-link" href="/#catalogue"><span>🌐</span><b>Modpacks en ligne</b></a><a class="portal-link" href="/#about"><span>👤</span><b>À propos de moi</b></a>
+        <div class="portal-section-label">ESPACE MEMBRE</div><a class="portal-link" href="/#account"><span>🔐</span><b>Compte / Connexion</b></a>
+        <div class="portal-section-label">MES OUTILS</div><a class="portal-link" href="/office"><span>📝</span><b>Suite Horizon</b></a><a class="portal-link current" href="/cloud"><span>☁️</span><b>Havre</b></a>
+      </nav>
+      <div class="portal-foot"><a href="/#contact">✉️ <span>Me retrouver</span></a><small>Construit projet après projet</small></div>
+    </aside>
+    <main class="cloud-workspace">
+      <header class="top"><a class="brand" href="/">✦ <span>HAVRE</span></a><nav><a href="/office">📝 Suite Horizon</a><a href="/#account">Mon compte ↗</a></nav></header>
+      <div class="cloud-content">
+        <section class="hero"><div><p class="eyebrow">TON ESPACE PERSONNEL</p><h1>Tes fichiers, <em>à toi.</em></h1><p>Un espace privé pour conserver, organiser et retrouver tes fichiers depuis tes appareils.</p></div><div class="storage"><span>ESPACE UTILISÉ</span><b id="storage-label">Connexion…</b><div class="meter"><i id="storage-meter"></i></div><small id="storage-sub"></small></div></section>
+        <section class="toolbar"><div class="crumbs" id="breadcrumbs"></div><div class="actions"><input id="file-search" class="file-search" type="search" placeholder="Rechercher un fichier…" aria-label="Rechercher dans Havre"><select id="home-view" class="secondary" aria-label="Personnaliser la vue"><option value="files">Mes fichiers</option><option value="favorites">Favoris</option><option value="recent">Récents</option></select><button id="shared-toggle" class="secondary">Dossiers partagés</button><button id="organize" class="secondary">Ranger automatiquement</button><button id="trash-toggle" class="secondary">♲ Corbeille</button><button id="new-folder" class="secondary">＋ Dossier</button><label class="upload primary">↑ Ajouter des fichiers<input id="upload-input" type="file" multiple></label><button id="refresh" class="secondary" title="Actualiser">↻</button></div></section>
+        <section id="bulk-actions" class="bulk-actions" hidden><b id="selection-count">0 sélectionné</b><button id="bulk-move" class="secondary">Déplacer</button><button id="bulk-trash" class="secondary">Corbeille</button><button id="bulk-restore" class="secondary" hidden>Restaurer</button><button id="bulk-purge" class="secondary danger" hidden>Supprimer définitivement</button><button id="bulk-clear" class="secondary">Annuler la sélection</button></section>
+        <div class="drop" id="dropzone"><span>↓</span><b>Dépose tes fichiers ici</b><small>Tous les formats acceptés · jusqu’à 10 Go par fichier</small></div>
+        <div class="progress-wrap" id="progress-wrap" hidden><div class="progress-info"><span id="progress-name">Envoi…</span><b id="progress-percent">0%</b></div><div class="meter"><i id="upload-meter"></i></div></div>
+        <section class="file-panel"><div class="panel-head"><div><p class="eyebrow">TON ESPACE</p><h2 id="folder-title">Mes fichiers</h2></div><span id="item-count" class="count">—</span></div><div class="table-head"><span>Nom</span><span>Modifié</span><span>Taille</span><span>Actions</span></div><div id="file-list" class="file-list"><p class="empty">Chargement de ton espace…</p></div></section>
+        <p class="privacy"><span>🔒</span><span>Tes fichiers sont privés à ton compte et restent stockés sur le serveur. Les versions précédentes et la corbeille aident à récupérer une suppression ou un remplacement. Pour les protéger d’une panne du serveur, conserve aussi une sauvegarde sur un autre disque.</span></p>
+      </div>
+    </main>
+  </div>
+  <dialog id="text-editor-dialog" class="file-editor-dialog"><header><div><p class="eyebrow">MODIFICATION DU FICHIER</p><h2 id="text-editor-title">Fichier texte</h2></div><button class="close" id="text-editor-close" aria-label="Fermer">×</button></header><textarea id="text-editor-content" spellcheck="false" aria-label="Contenu du fichier"></textarea><footer><span id="text-editor-state">Modifications enregistrées</span><div><button class="secondary" id="text-editor-cancel">Fermer</button><button class="primary" id="text-editor-save">Enregistrer</button></div></footer></dialog>
+  <dialog id="preview-dialog" class="preview-dialog"><header><div><p class="eyebrow">APERÇU</p><h2 id="preview-title">Fichier</h2></div><button class="close" id="preview-close" aria-label="Fermer">×</button></header><div id="preview-body"></div><footer><a id="preview-download" class="primary" download>Télécharger</a></footer></dialog>
+  <dialog id="versions-dialog"><form method="dialog"><button class="close" aria-label="Fermer">×</button></form><p class="eyebrow">HISTORIQUE AUTOMATIQUE</p><h2 id="versions-title">Versions du fichier</h2><div id="versions-list"></div></dialog><div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

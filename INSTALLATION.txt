@@ -1,0 +1,10 @@
+Correctif serveur Harbor Launcher — publication 0.2.13
+
+1. Arrête les deux fenêtres/services du serveur.
+2. Fais une copie de sauvegarde du dossier runtime actuel.
+3. Extrais le contenu de cette archive à la racine de serveur-modpacks et accepte le remplacement des fichiers.
+   Les fichiers remplacés sont runtime/lib.js, runtime/site/site.js et runtime/zip-update-package.js.
+4. Redémarre demarrer-services.bat.
+5. Réessaie l’envoi du ZIP de mise à jour depuis le site.
+
+Ce correctif doit remplacer l’archive précédente : elle omettait zip-update-package.js et empêchait le démarrage des services.

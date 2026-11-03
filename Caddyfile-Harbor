@@ -1,0 +1,9 @@
+mavie7620.duckdns.org {
+    @launcher path /api/ping /api/packs* /api/publish* /updates/*
+    handle @launcher {
+        reverse_proxy 127.0.0.1:8787
+    }
+    handle {
+        reverse_proxy 127.0.0.1:8788
+    }
+}

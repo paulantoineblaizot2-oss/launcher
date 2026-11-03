@@ -1,0 +1,61 @@
+SERVEUR DE MODPACKS BUILD BOAT
+==============================
+À installer sur le PC qui reste allumé chez toi. Il faut seulement Node.js 18 ou plus (https://nodejs.org).
+Aucune autre installation : ce dossier se suffit à lui-même.
+
+1) DÉMARRER LE SERVEUR
+   Pour démarrer tout l'ensemble site + launcher, double-clique sur demarrer-services.bat.
+   Il démarre Harbor Launcher sur 8787 et le site web sur 8788 dans deux fenêtres indépendantes.
+   Si tu veux démarrer uniquement Harbor Launcher, double-clique sur lancer-serveur.bat.
+   Au premier démarrage il crée config.json avec un code d'accès au hasard et affiche ce code.
+   Laisse la fenêtre ouverte : tant qu'elle est ouverte, tes amis peuvent télécharger.
+
+2) PUBLIER UN MODPACK
+   La publication est ouverte : aucun code propriétaire n’est requis.
+   Clique ensuite sur « Publier » sur la carte du modpack dans Mes modpacks.
+   Republier le même modpack = mise à jour : les joueurs voient « Mettre à jour » dans le launcher.
+   Le bouton publier.bat reste disponible pour publier depuis le PC serveur.
+
+3) QUE LES AMIS PUISSENT SE CONNECTER (depuis Internet)
+   - Pare-feu Windows : autoriser Node.js quand Windows le demande (réseau privé).
+   - Box Internet : rediriger le port 8787 (TCP) vers l'adresse IP locale de ce PC.
+   - Donne à tes amis ton IP publique (ou un nom gratuit type DuckDNS, plus pratique car l'IP change),
+     par exemple  http://ton-nom.duckdns.org:8787
+   Le serveur Harbor Launcher est réservé aux API de modpacks et aux téléchargements sur le port 8787.
+   Le site web utilise un processus séparé sur le port local 8788, publié en HTTPS par Caddy.
+   Pour afficher le bouton de téléchargement sur le site, dépose les fichiers de l'archive Harbor Launcher Update dans data\updates.
+   Dans le launcher de l'ami : Paramètres > Général > Serveur de modpacks : adresse + code d'accès.
+   Puis Mes modpacks > « Modpacks en ligne » > Télécharger.
+   Entre amis sur le même réseau local, l'adresse locale suffit (ex. http://192.168.1.20:8787).
+
+SÉCURITÉ
+   - Le site et la publication sont publics. Le code d'accès sert à autoriser le catalogue et les téléchargements depuis le launcher. Change-le dans config.json (puis relance).
+   - Tout utilisateur peut publier; le serveur limite la fréquence et la taille des publications.
+   - Pour les téléchargements, le serveur ne sert que les fichiers .jar listés dans le manifeste de chaque modpack.
+   - Les comptes membres et l’administration du site exigent une adresse HTTPS. Les formulaires restent bloqués en HTTP.
+     Un proxy HTTPS peut être placé devant le serveur; configure trustProxy seulement si le serveur Node n’est pas accessible directement depuis Internet.
+   - Le launcher vérifie la taille et la somme SHA-256 de chaque fichier et refuse tout fichier altéré.
+   - Ne publie que des mods dont la licence autorise la redistribution.
+
+4) CRÉER LE COMPTE ADMINISTRATEUR DU SITE
+   - Configure HTTPS et redémarre le serveur.
+   - Crée ton compte membre sur le site en HTTPS.
+   - Sur le PC serveur, ouvre data\auth\admin-setup-code.txt et saisis son code dans « Mon compte ».
+     Ce code ne fonctionne qu’une fois et le fichier est supprimé après activation.
+   - Depuis « Administration du site », modifie les textes ou ajoute des cartes, notes et liens.
+     Les changements sont conservés dans data\site\content.json et restent après redémarrage.
+
+5) SUITE HORIZON
+   - Ouvre /office sur le même site et connecte-toi avec ton compte membre pour enregistrer les documents en ligne.
+   - L’espace propose un éditeur de texte, un créateur de présentations et un tableur avec les formules de base.
+   - Les fichiers .docx, .pptx et .xlsx peuvent être importés et exportés; .txt, .html et .csv sont aussi acceptés.
+   - Les documents sont privés à leur compte et enregistrés dans data\office\accounts. Inclue ce dossier dans tes sauvegardes.
+
+6) SERVEURS MINECRAFT DEPUIS LE SITE
+   - En HTTPS, connecte-toi avec le compte administrateur, puis ouvre « Créer un serveur Minecraft ».
+   - Choisis Vanilla, Forge ou NeoForge, accepte le contrat EULA, puis crée le serveur.
+   - Les fichiers et mondes sont conservés dans data\minecraft-servers. Sauvegarde ce dossier régulièrement.
+   - Depuis la page, démarre ou arrête chaque serveur, consulte sa console et envoie des commandes Minecraft.
+   - Pour les chargeurs moddés, ajoute des fichiers .jar ou recherche des mods compatibles sur Modrinth. Les dépendances requises sont ajoutées avec le mod. Redémarre le serveur pour charger les nouveaux mods.
+   - Le total des serveurs démarrés par cette page est limité à 6 Go de mémoire pour garder de la marge sur le PC hôte.
+   - Configure séparément le pare-feu Windows et le port de la box pour rendre un serveur joignable depuis Internet.
